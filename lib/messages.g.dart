@@ -1135,6 +1135,7 @@ Subscription _$SubscriptionFromJson(Map<String, dynamic> json) => Subscription(
           .fromJson((json['current_period_start'] as num).toInt()),
       currentPeriodEnd: const TimestampConverter()
           .fromJson((json['current_period_end'] as num).toInt()),
+      cancelAtPeriodEnd: json['cancel_at_period_end'] as bool,
       metadata: json['metadata'] as Map<String, dynamic>?,
     );
 
@@ -1148,6 +1149,7 @@ Map<String, dynamic> _$SubscriptionToJson(Subscription instance) {
         const TimestampConverter().toJson(instance.currentPeriodStart),
     'current_period_end':
         const TimestampConverter().toJson(instance.currentPeriodEnd),
+    'cancel_at_period_end': instance.cancelAtPeriodEnd,
     'status': _$SubscriptionStatusEnumMap[instance.status]!,
     'items': instance.items.toJson(
       (value) => value.toJson(),

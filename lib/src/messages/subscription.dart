@@ -41,6 +41,9 @@ class Subscription extends Message {
   @TimestampConverter()
   final DateTime currentPeriodEnd;
 
+  /// If true, this subscription will not renew at the end of the current period
+  final bool cancelAtPeriodEnd;
+
   /// Possible values are incomplete, incomplete_expired, trialing, active,
   /// past_due, canceled, or unpaid.
   ///
@@ -77,6 +80,8 @@ class Subscription extends Message {
   /// format.
   final Map<String, dynamic>? metadata;
 
+
+
   Subscription({
     required this.object,
     required this.id,
@@ -86,6 +91,7 @@ class Subscription extends Message {
     required this.items,
     required this.currentPeriodStart,
     required this.currentPeriodEnd,
+    required this.cancelAtPeriodEnd,
     this.metadata,
   });
 
